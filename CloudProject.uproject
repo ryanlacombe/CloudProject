@@ -2,5 +2,20 @@
 	"FileVersion": 3,
 	"EngineAssociation": "4.25",
 	"Category": "",
-	"Description": ""
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "CloudProject",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
+		},
+		{
+			"Name" : "ComputeShaders",
+			"Type" : "Runtime",
+			"LoadingPhase" : "PostConfigInit"
+		}
+	]
 }
