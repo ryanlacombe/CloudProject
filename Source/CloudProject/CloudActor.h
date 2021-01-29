@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "HoverComponent.h"
 #include "CloudActor.generated.h"
 
 UCLASS()
@@ -14,6 +15,12 @@ class CLOUDPROJECT_API ACloudActor : public AActor
 public:	
 	// Sets default values for this actor's properties
 	ACloudActor();
+
+	UPROPERTY(VisibleAnywhere)
+		UStaticMeshComponent* VisualMesh;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+		UHoverComponent* HoveringComponent;
 
 protected:
 	// Called when the game starts or when spawned

@@ -9,6 +9,13 @@ ACloudActor::ACloudActor()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	//Create and attach Mesh Component
+	VisualMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MESH"));
+	VisualMesh->SetupAttachment(RootComponent);
+
+	//Creates the HoverComponent
+	HoveringComponent = CreateDefaultSubobject<UHoverComponent>(TEXT("Hover"));
+
 }
 
 // Called when the game starts or when spawned
