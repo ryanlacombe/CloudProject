@@ -12,7 +12,7 @@ void FComputeShaders::StartupModule()
 	
 	//Finds the shaders directory for use
 	FString ShaderDirectory = FPaths::Combine(FPaths::ProjectDir(), TEXT("CustomShaders/Private"));
-	AddShaderSourceDirectoryMapping("/Project", ShaderDirectory);
+	AddShaderSourceDirectoryMapping("/CustomShaders", ShaderDirectory);
 }
 
 void FComputeShaders::ShutdownModule()

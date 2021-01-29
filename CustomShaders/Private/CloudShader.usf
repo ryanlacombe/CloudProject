@@ -1,6 +1,12 @@
+#pragma once
+#include "/Engine/Public/Platform.ush"
+
 RWTexture2D<float> OutputTexture;
 float2 Dimensions;
 uint TimeStamp;
+uint THREADGROUPSIZE_X;
+uint THREADGROUPSIZE_Y;
+uint THREADGROUPSIZE_Z;
 
 float hash12(float2 p)
 {
@@ -10,7 +16,10 @@ float hash12(float2 p)
 }
 
 [numthreads(THREADGROUPSIZE_X, THREADGROUPSIZE_Y, THREADGROUPSIZE_Z)]
-void MainComputeShader(uint3 Gid : SV_GroupID, uint3 DTid : SV_DispatchThreadID, uint3 GTid : SV_GroupThreadID, uint GI : SV_GroupIndex)
+void MainComputeShader(uint3 Gid : SV_GroupID,
+uint3 DTid : SV_DispatchThreadID,
+uint3 GTid : SV_GroupThreadID,
+uint GI : SV_GroupIndex)
 {
 	float2 p = float(DTid.xy * TimeStamp);
 	float output = hash12(p);
