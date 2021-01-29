@@ -6,7 +6,8 @@ public class ComputeShaders : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 		
-		PublicDependencyModuleNames.AddRange(new string[] {"Core", "CoreUObject", "Engine", "CloudProject" } );
+		PublicDependencyModuleNames.AddRange(new string[] 
+		{"Core", "CoreUObject", "Engine", "CloudProject", "Renderer", "RenderCore", "RHI", "Projects"} );
 		
 		PrivateDependencyModuleNames.AddRange(new string[] {});
 	}
