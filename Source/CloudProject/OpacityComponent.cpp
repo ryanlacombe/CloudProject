@@ -32,3 +32,14 @@ void UOpacityComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAct
 	// ...
 }
 
+void UOpacityComponent::CheckOpacity()
+{
+	if (OpacityLevel >= 100)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Whoa, you made an object more than 100% opaque!"));
+	}
+	else if (OpacityLevel <= 0)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Even if this worked you wouldn't be able to see the cloud!"));
+	}
+}
