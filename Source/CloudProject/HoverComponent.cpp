@@ -36,26 +36,61 @@ void UHoverComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActor
 	FVector NewLocation = owner->GetActorLocation();
 
 	//Get Owner's runtime
-	float RunningTime = owner->GetGameTimeSinceCreation();
+	float GameTime = owner->GetGameTimeSinceCreation();
 
 	//Calculate height if going up
-	if (!Floatingdown)
+	if (!HoveringZNegative)
 	{
-		float DeltaHeight = (FMath::Sin(RunningTime + DeltaTime) - FMath::Sin(RunningTime));
+		float DeltaHeight = (FMath::Sin(GameTime + DeltaTime) - FMath::Sin(GameTime));
 		NewLocation.Z += DeltaHeight * 200.0f;
 	}
 	//If going down
 	else
 	{
-		float DeltaHeight = (FMath::Sin(RunningTime + DeltaTime) - FMath::Sin(RunningTime));
-		NewLocation.Z -= DeltaHeight * 20.0f;
+		float DeltaHeight = (FMath::Sin(GameTime + DeltaTime) - FMath::Sin(GameTime));
+		NewLocation.Z -= DeltaHeight * 200.0f;
+	}
+
+	//Calculate if going Y positive
+	if (!HoveringYNegative)
+	{
+		float DeltaDepth = (FMath::Sin(GameTime + DeltaTime) - FMath::Cos(GameTime));
+		NewLocation.Y += DeltaDepth * 5.0f;
+	}
+	//If going Y negative
+	else
+	{
+		float DeltaDepth = (FMath::Cos(GameTime + DeltaTime) - FMath::Sin(GameTime));
+		NewLocation.Y -= DeltaDepth * 300.0f;
+	}
+
+	//Calculate if going X positive
+	if (HoveringXNegative)
+	{
+		float DeltaLength = (FMath::Cos(GameTime + DeltaTime) - FMath::Cos(GameTime));
+		NewLocation.X += DeltaLength * 20.0f;
+	}
+	//If going X negative
+	else
+	{
+		float DeltaLength = (FMath::Cos(GameTime + DeltaTime) - FMath::Cos(GameTime));
+		NewLocation.X -= DeltaLength * 20.0f;
 	}
 
 	owner->SetActorLocation(NewLocation);
 }
 
-void UHoverComponent::SetFloatingDirection(bool floatingup)
+void UHoverComponent::SetHoveringZDirection(bool HoveringZPositive)
 {
-	Floatingdown = !floatingup;
+	HoveringZNegative = !HoveringZPositive;
 }
 
+void UHoverComponent::SetHoveringYDirection(bool HoveringYPositive)
+{
+	HoveringYNegative = !HoveringYPositive;
+}
+
+void UHoverComponent::SetHoveringXDirection(bool HoveringXPositive)
+{
+	HoveringXNegative = !HoveringXPositive;
+}

@@ -11,11 +11,7 @@
 			"AdditionalDependencies": [
 				"Engine"
 			]
-		},
-		{
-			"Name" : "ComputeShaders",
-			"Type" : "Runtime",
-			"LoadingPhase" : "PostConfigInit"
 		}
+		
 	]
 }

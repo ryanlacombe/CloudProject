@@ -7,7 +7,7 @@
 #include "OpacityComponent.generated.h"
 
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS( ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class CLOUDPROJECT_API UOpacityComponent : public UActorComponent
 {
 	GENERATED_BODY()
@@ -17,8 +17,10 @@ public:
 	UOpacityComponent();
 
 	//Creates a variable to control the opacity
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(Category = "Opacity", EditAnywhere, BlueprintReadWrite)
 		int OpacityLevel;
+
+	
 
 protected:
 	// Called when the game starts

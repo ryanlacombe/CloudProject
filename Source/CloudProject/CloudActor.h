@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "HoverComponent.h"
+#include "OpacityComponent.h"
 #include "CloudActor.generated.h"
 
 UCLASS()
@@ -21,6 +22,9 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 		UHoverComponent* HoveringComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+		UOpacityComponent* OpacityComponent;
 
 protected:
 	// Called when the game starts or when spawned

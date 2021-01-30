@@ -17,7 +17,13 @@ public:
 	UHoverComponent();
 
 	UPROPERTY(Category = "Hover", EditAnywhere, BlueprintReadWrite)
-	bool Floatingdown = false;
+	bool HoveringZNegative = false;
+
+	UPROPERTY(Category = "Hover", EditAnywhere, BlueprintReadWrite)
+	bool HoveringYNegative = false;
+
+	UPROPERTY(Category = "Hover", EditAnywhere, BlueprintReadWrite)
+	bool HoveringXNegative = false;
 
 protected:
 	// Called when the game starts
@@ -28,5 +34,11 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UFUNCTION(BlueprintCallable)
-	void SetFloatingDirection(bool floatingup);
+	void SetHoveringZDirection(bool HoveringZPositive);
+
+	UFUNCTION(BlueprintCallable)
+	void SetHoveringYDirection(bool HoveringYPositive);
+
+	UFUNCTION(BlueprintCallable)
+	void SetHoveringXDirection(bool HoveringXPositive);
 };
