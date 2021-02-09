@@ -25,6 +25,32 @@ public:
 	UPROPERTY(Category = "Hover", EditAnywhere, BlueprintReadWrite)
 	bool HoveringXNegative = false;
 
+	//Sets default values for the multipliers
+	UPROPERTY(Category = "Hover", EditAnywhere, BlueprintReadWrite)
+	int ZMultiplier;
+
+	UPROPERTY(Category = "Hover", EditAnywhere, BlueprintReadWrite)
+	int YMultiplier;
+
+	UPROPERTY(Category = "Hover", EditAnywhere, BlueprintReadWrite)
+	int XMultiplier;
+
+	//Sets default values for the Max and Mins
+	UPROPERTY(Category = "Hover", EditAnywhere, BlueprintReadWrite)
+	int ZMax;
+	UPROPERTY(Category = "Hover", EditAnywhere, BlueprintReadWrite)
+	int ZMin;
+
+	UPROPERTY(Category = "Hover", EditAnywhere, BlueprintReadWrite)
+	int YMax;
+	UPROPERTY(Category = "Hover", EditAnywhere, BlueprintReadWrite)
+	int YMin;
+
+	UPROPERTY(Category = "Hover", EditAnywhere, BlueprintReadWrite)
+	int XMax;
+	UPROPERTY(Category = "Hover", EditAnywhere, BlueprintReadWrite)
+	int XMin;
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;

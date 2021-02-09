@@ -19,7 +19,8 @@ void UOpacityComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
+	//Calls the Opacity function
+	CheckOpacity();
 	
 }
 

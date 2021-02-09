@@ -35,46 +35,67 @@ void UHoverComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActor
 	//Get current location
 	FVector NewLocation = owner->GetActorLocation();
 
+	//Get StartingLocation
+	FVector StartLocation = owner->GetActorLocation();
+
 	//Get Owner's runtime
 	float GameTime = owner->GetGameTimeSinceCreation();
 
 	//Calculate height if going up
 	if (!HoveringZNegative)
 	{
-		float DeltaHeight = (FMath::Sin(GameTime + DeltaTime) - FMath::Sin(GameTime));
-		NewLocation.Z += DeltaHeight * 200.0f;
+		NewLocation.Z += ZMultiplier;
+		if (NewLocation.Z >= ZMax)
+		{
+			HoveringZNegative = true;
+		}
 	}
 	//If going down
 	else
 	{
-		float DeltaHeight = (FMath::Sin(GameTime + DeltaTime) - FMath::Sin(GameTime));
-		NewLocation.Z -= DeltaHeight * 200.0f;
+		NewLocation.Z -= ZMultiplier;
+		if (NewLocation.Z <= ZMin)
+		{
+			HoveringZNegative = false;
+		}
 	}
 
 	//Calculate if going Y positive
 	if (!HoveringYNegative)
 	{
-		float DeltaDepth = (FMath::Sin(GameTime + DeltaTime) - FMath::Cos(GameTime));
-		NewLocation.Y += DeltaDepth * 5.0f;
+		NewLocation.Y += YMultiplier;
+		if (NewLocation.Y >= YMax)
+		{
+			HoveringYNegative = true;
+		}
 	}
 	//If going Y negative
 	else
 	{
-		float DeltaDepth = (FMath::Cos(GameTime + DeltaTime) - FMath::Sin(GameTime));
-		NewLocation.Y -= DeltaDepth * 300.0f;
+		NewLocation.Y -= YMultiplier;
+		if (NewLocation.Y <= YMin)
+		{
+			HoveringYNegative = false;
+		}
 	}
 
 	//Calculate if going X positive
-	if (HoveringXNegative)
+	if (!HoveringXNegative)
 	{
-		float DeltaLength = (FMath::Cos(GameTime + DeltaTime) - FMath::Cos(GameTime));
-		NewLocation.X += DeltaLength * 20.0f;
+		NewLocation.X += XMultiplier;
+		if (NewLocation.X >= XMax)
+		{
+			HoveringXNegative = true;
+		}
 	}
 	//If going X negative
 	else
 	{
-		float DeltaLength = (FMath::Cos(GameTime + DeltaTime) - FMath::Cos(GameTime));
-		NewLocation.X -= DeltaLength * 20.0f;
+		NewLocation.X -= XMultiplier;
+		if (NewLocation.X <= XMin)
+		{
+			HoveringXNegative = false;
+		}
 	}
 
 	owner->SetActorLocation(NewLocation);
