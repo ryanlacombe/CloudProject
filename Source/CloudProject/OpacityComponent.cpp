@@ -43,4 +43,8 @@ void UOpacityComponent::CheckOpacity()
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Even if this worked you wouldn't be able to see the cloud!"));
 	}
+	else if (OpacityLevel > 0 && OpacityLevel < 100)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Now you can see the cloud!"));
+	}
 }

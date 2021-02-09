@@ -13,6 +13,7 @@ ACloudActor::ACloudActor()
 	VisualMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MESH"));
 	VisualMesh->SetupAttachment(RootComponent);
 	
+	
 
 	//Creates the HoverComponent
 	HoveringComponent = CreateDefaultSubobject<UHoverComponent>(TEXT("Hover"));
